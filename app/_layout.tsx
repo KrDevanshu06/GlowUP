@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import { useAuth } from '@/contexts/AuthContext';
+import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -15,17 +17,33 @@ export default function RootLayout() {
       <ThemeProvider>
         <AuthProvider>
           <OfflineProvider>
-            <Stack screenOptions={{ headerShown: false }}>
-              <Stack.Screen name="auth" />
-              <Stack.Screen name="onboarding" />
-              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-              <Stack.Screen name="camera" options={{ presentation: 'modal' }} />
-              <Stack.Screen name="+not-found" />
-            </Stack>
+            <AuthGate />
             <StatusBar style="auto" />
           </OfflineProvider>
         </AuthProvider>
       </ThemeProvider>
     </GestureHandlerRootView>
   );
+
+function AuthGate() {
+  const { user, loading } = useAuth();
+  if (loading) return <LoadingSpinner />;
+  if (user) {
+    return (
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="camera" options={{ presentation: 'modal' }} />
+        <Stack.Screen name="+not-found" />
+      </Stack>
+    );
+  } else {
+    return (
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="auth" />
+        <Stack.Screen name="onboarding" />
+        <Stack.Screen name="+not-found" />
+      </Stack>
+    );
+  }
+}
 }

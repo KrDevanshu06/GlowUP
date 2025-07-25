@@ -11,6 +11,7 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { Sun, Moon, Plus, Download, QrCode, Calendar, Bell, CircleDot as DragHandleDots2, Check, Star, Clock } from 'lucide-react-native';
 import { useTheme } from '@/contexts/ThemeContext';
+import * as Haptics from 'expo-haptics';
 
 export default function RoutineScreen() {
   const { colors } = useTheme();
