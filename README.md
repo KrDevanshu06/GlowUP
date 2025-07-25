@@ -1,272 +1,241 @@
-# GlowUp - AI Skincare Companion
+# ✨ GlowUp - Your AI Skincare Companion 🌿📱
 
-A production-ready mobile application built with Expo and React Native that helps users identify their skin type, get personalized product recommendations, and track their skincare journey.
+> A next-gen **mobile-first skincare app** that helps Gen Z users analyze their skin, get personalized product recommendations, build routines, and track progress — powered by **AI, camera integration, and real-time personalization**.
 
-## 🌟 Features
+<p align="center">
+  <img src="https://img.shields.io/badge/Built_with-React_Native-blue?style=for-the-badge&logo=react" />
+  <img src="https://img.shields.io/badge/Mobile_First-Yes-green?style=for-the-badge&logo=expo" />
+  <img src="https://img.shields.io/badge/AI_Powered-Yes-purple?style=for-the-badge&logo=openai" />
+  <img src="https://img.shields.io/badge/Skin_Analysis-Camera_%2B_Quiz-orange?style=for-the-badge&logo=camera" />
+</p>
 
-### Core Functionality
-- **Authentication System**: Complete login/signup flow with Supabase Auth
-- **Camera Integration**: Skin analysis, progress tracking, and QR code scanning
-- **Offline Support**: Works offline with data synchronization
-- **Dark/Light Mode**: System-aware theming with smooth transitions
-- **Haptic Feedback**: Enhanced user experience with tactile feedback
+---
 
-### Screens & Navigation
-- **Onboarding**: Welcome flow with social sign-up options
-- **Skin Analysis**: AI-powered quiz and camera-based analysis
-- **Product Recommendations**: Personalized suggestions with match percentages
-- **Routine Builder**: Drag-and-drop routine creation with export options
-- **Progress Tracking**: Calendar view with before/after photos
-- **Glow Coach**: AI chatbot with customizable personalities
-- **Profile**: User settings, achievements, and statistics
+## 🌟 Key Features
 
-## 🚀 Getting Started
+| Category                 | Description                                                    |
+| ------------------------ | -------------------------------------------------------------- |
+| 🔐 **Authentication**    | Full login/signup with **Supabase Auth**, secure token storage |
+| 📷 **Camera Support**    | Skin capture, **QR scanner**, and progress tracking            |
+| 🧠 **AI Quiz Engine**    | Skin-type quiz + environment-based personalization             |
+| 🧴 **Routine Builder**   | Drag-and-drop skincare routines with export & edit             |
+| 📅 **Progress Calendar** | Before/after tracking, goal setting, and visual logs           |
+| 🤖 **Glow Coach**        | AI chatbot with multiple personality modes                     |
+| 🌘 **Dark/Light Mode**   | Smooth system-aware theming                                    |
+| 📡 **Offline Ready**     | Local-first with **MMKV** and sync capabilities                |
+| 🎨 **Design System**     | Consistent UI with custom fonts, animations, haptics           |
 
-### Prerequisites
-- Node.js 18+ 
-- Expo CLI (`npm install -g @expo/cli`)
-- iOS Simulator (for iOS development)
-- Android Studio (for Android development)
+---
 
-### Installation
+## 🔍 Use Case Overview
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd glowup-app
-   ```
+🎯 **Target Audience:**
+Young skincare users (18–25) who seek personalized, science-backed skincare help.
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+🧩 **Solution Fit:**
+GlowUp combines smart diagnostics, habit tracking, and product matchmaking in a single experience.
 
-3. **Set up environment variables**
-   ```bash
-   cp .env.example .env
-   # Edit .env with your Supabase credentials
-   ```
+---
 
-4. **Start the development server**
-   ```bash
-   npm run dev
-   ```
+## 🧱 Tech Stack
 
-### Environment Setup
+| Layer              | Tech                                                              |
+| ------------------ | ----------------------------------------------------------------- |
+| 🛠️ Framework      | [React Native](https://reactnative.dev), [Expo](https://expo.dev) |
+| 🔐 Backend         | [Supabase](https://supabase.com) (Auth + Realtime)                |
+| 📷 Native Features | `expo-camera`, `expo-blur`, `expo-haptics`, `expo-status-bar`     |
+| 💾 Local Storage   | `MMKV` for ultra-fast persistent storage                          |
+| ⚙️ State           | React Context + Hooks                                             |
+| 🌐 Web             | PWA-ready with `expo export --platform web`                       |
+| 🧪 Testing         | Unit, integration & snapshot with Jest                            |
 
-Create a `.env` file with the following variables:
+---
 
-```env
-EXPO_PUBLIC_SUPABASE_URL=your_supabase_url
-EXPO_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-EXPO_PUBLIC_APP_NAME=GlowUp
-EXPO_PUBLIC_APP_VERSION=1.0.0
+## 🗂️ Project Structure
+
 ```
-
-## 📱 Platform Support
-
-### iOS
-- iOS 13.0+
-- iPhone and iPad support
-- Native camera integration
-- Haptic feedback
-
-### Android
-- Android 6.0+ (API level 23)
-- Camera and storage permissions
-- Material Design components
-
-### Web (PWA)
-- Progressive Web App capabilities
-- Responsive design
-- Offline functionality
-- Camera access (where supported)
-
-## 🏗️ Architecture
-
-### Project Structure
-```
-├── app/                    # Expo Router pages
-│   ├── (tabs)/            # Tab navigation screens
-│   ├── auth.tsx           # Authentication screen
-│   ├── camera.tsx         # Camera modal
+├── app/                    # Pages & screens (Expo Router)
+│   ├── (tabs)/            # Main navigation tabs
+│   ├── auth.tsx           # Auth screen
+│   ├── camera.tsx         # Skin/camera analysis
 │   └── _layout.tsx        # Root layout
-├── components/            # Reusable components
-│   ├── auth/             # Authentication components
-│   ├── camera/           # Camera components
-│   └── ui/               # UI components
-├── contexts/             # React contexts
-├── hooks/                # Custom hooks
-├── lib/                  # Utilities and configurations
-├── types/                # TypeScript type definitions
-└── __tests__/            # Test files
+├── components/            # Reusable components (UI, camera, auth)
+├── contexts/              # Global state providers
+├── hooks/                 # Custom reusable hooks
+├── lib/                   # API clients, constants
+├── types/                 # Global TypeScript types
+├── __tests__/             # All tests
 ```
 
-### State Management
-- **React Context**: For global state (auth, theme, offline)
-- **React Hook Form**: For form state management
-- **MMKV**: For fast local storage
-- **Supabase**: For backend and real-time features
+---
 
 ## 🎨 Design System
 
-### Colors
-- **Primary**: #8B5CF6 (Purple)
-- **Secondary**: #10B981 (Green)
-- **Accent**: #F59E0B (Orange)
-- **Background**: Dynamic based on theme
-- **Surface**: Elevated backgrounds
+| Element              | Style                                   |
+| -------------------- | --------------------------------------- |
+| 🎨 **Primary Color** | `#8B5CF6` (Violet)                      |
+| 🌿 **Secondary**     | `#10B981` (Green)                       |
+| 🔶 **Accent**        | `#F59E0B` (Amber)                       |
+| 📚 **Typography**    | `Inter`, with fallback                  |
+| 🧩 **Components**    | Buttons, cards, spinners, toasts, icons |
+| 💬 **Icons**         | Lucide + Expo Icons                     |
 
-### Typography
-- **Font Family**: Inter (system fallback)
-- **Weights**: 400 (Regular), 600 (Semibold), 700 (Bold), 800 (Extrabold)
+---
 
-### Components
-- **Button**: Multiple variants with haptic feedback
-- **Toast**: Animated notifications
-- **LoadingSpinner**: Smooth loading animations
+## 🏗️ System Architecture
 
-## 🧪 Testing
+<!-- Generated with [Mermaid Live Editor](https://mermaid-js.github.io/mermaid-live-editor) -->
+```mermaid
+flowchart TD
+    A[User visits GlowUP app] --> B{Is user authenticated?}
+    B -- No --> C[Show Login/Signup Screen]
+    C --> D[User submits credentials]
+    D --> E[Supabase Auth API]
+    E -- Success --> F[Store session in SecureStore/localStorage]
+    F --> G[Show Onboarding if first login]
+    G --> H[Show Main App Tabs]
+    E -- Failure --> C
+    B -- Yes --> H[Show Main App Tabs]
 
-### Running Tests
-```bash
-# Run all tests
-npm test
+    H --> I[Home Tab]
+    H --> J[Analysis Tab]
+    H --> K[Routine Tab]
+    H --> L[Chat Tab]
+    H --> M[Profile Tab]
 
-# Run tests in watch mode
-npm run test:watch
+    J --> N[Camera Access]
+    N --> O[Skin Analysis]
+    O --> P[Show Recommendations]
 
-# Generate coverage report
-npm run test:coverage
+    K --> Q[Show Routine]
+    Q --> R[Mark Steps Complete]
+    Q --> S[Download QR/Share]
+
+    M --> T[View/Edit Profile]
+    M --> U[Sign Out]
+    U --> C
 ```
 
-### Test Coverage
-- Unit tests for components
-- Integration tests for contexts
-- Snapshot tests for UI consistency
+---
 
-## 📦 Building & Deployment
+### ⚙️ How It Works
 
-### Development Build
+1. **Mobile App** triggers skin analysis through AI Quiz, Camera, and Environment data.
+2. All inputs converge in the **Personalization Engine**.
+3. This leads to tailored routines via the **Recommendation Module**.
+4. User data is securely stored in **Supabase**, synced offline with **MMKV**.
+5. Users can track progress and engage with the **Glow Coach** AI assistant.
+
+---
+## 📲 Screens & Navigation Flow
+
+1. **👋 Onboarding** → Social signup/login
+2. **🧠 AI Quiz** → Skin profile setup
+3. **📷 Camera** → Scan or track skin changes
+4. **🧴 Recommendations** → Personalized matches
+5. **🛠 Routine Builder** → Interactive setup
+6. **📆 Progress View** → History, photos, calendar
+7. **🤖 Glow Coach** → AI skincare assistant
+8. **👤 Profile** → Stats, settings, achievements
+
+---
+
+## 🚀 Quick Start
+
+### 1️⃣ Clone & Install
+
 ```bash
-# iOS
-npm run ios
-
-# Android
-npm run android
-
-# Web
-npm run web
+git clone https://github.com/KrDevanshu06/GlowUP.git
+cd GlowUP
+npm install
 ```
 
-### Production Build
+### 2️⃣ Set Environment
+
 ```bash
-# Web (Static)
-npm run build:web
-
-# iOS (with EAS)
-npm run build:ios
-
-# Android (with EAS)
-npm run build:android
+cp .env.example .env
+# Fill in your Supabase project details
 ```
 
-### PWA Deployment
-The web build is PWA-ready with:
-- Service worker for offline functionality
-- App manifest for installation
-- Responsive design for all screen sizes
+### 3️⃣ Run It
 
-## 🔧 Development Workflow
-
-### Code Quality
 ```bash
-# Linting
-npm run lint
-npm run lint:fix
-
-# Type checking
-npm run type-check
+npm run dev
+# or `npm run ios` / `npm run android`
 ```
 
-### Git Hooks
-- Pre-commit: Lint and type check
-- Pre-push: Run tests
+---
 
-## 🌐 Accessibility
+## 🌐 PWA & Web Support
 
-### Features
-- Screen reader support
-- High contrast mode
-- Keyboard navigation (web)
-- Semantic HTML elements
-- WCAG 2.1 AA compliance
+✔️ Responsive Layout
+✔️ Camera on Web (where supported)
+✔️ Offline-ready with service workers
+✔️ Installable like a native app
 
-### Testing
-- Use screen readers during development
-- Test with high contrast mode
-- Verify keyboard navigation
+---
 
-## 📊 Performance
+## 📈 Performance & Testing
 
-### Optimizations
-- Image optimization with expo-image
-- Bundle splitting for web
-- Lazy loading of screens
-- Efficient re-renders with React.memo
+* 🔍 Lazy loading of routes
+* ⚡ Image optimization with `expo-image`
+* 🧪 Snapshot + unit + integration tests
+* 🧠 Error boundaries + crash reporting
+* 🗂️ Bundle splitting & async imports
 
-### Monitoring
-- Performance metrics tracking
-- Error boundary implementation
-- Crash reporting setup
+---
 
-## 🔐 Security
+## 🔒 Security Highlights
 
-### Authentication
-- Secure token storage with expo-secure-store
-- Session management with Supabase
-- Password validation and hashing
+* 🔐 Supabase-secured auth + tokens
+* 🔑 SecureStore for session handling
+* 🧼 Form validation + input sanitization
+* 📡 HTTPS-first API calls
 
-### Data Protection
-- HTTPS enforcement
-- Input validation and sanitization
-- Secure API communication
+---
 
-## 🤝 Contributing
+## 📊 Roadmap
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+✅ Authentication
+✅ Camera-based skin analysis
+✅ Personalized product matching
+✅ Routine builder
+✅ Dark/light mode
+✅ Offline sync
 
-### Development Guidelines
-- Follow TypeScript best practices
-- Write tests for new features
-- Update documentation
-- Follow the established code style
+🚧 Coming Soon:
 
-## 📄 License
+* [ ] 🧬 AI-powered ingredient analyzer
+* [ ] 🌍 Multi-language support
+* [ ] 🤝 Social routine sharing
+* [ ] 📊 Analytics Dashboard
+* [ ] 🧠 Wearable data integration
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+---
 
-## 🆘 Support
+## 👥 Contributing
 
-For support and questions:
-- Create an issue on GitHub
-- Check the documentation
-- Review existing issues and discussions
+1. Fork this repo
+2. Create a feature branch
+3. Commit with clear messages
+4. Open a PR & follow code style
 
-## 🚀 Roadmap
+---
 
-### Upcoming Features
-- [ ] AI-powered ingredient analysis
-- [ ] Social sharing capabilities
-- [ ] Advanced progress analytics
-- [ ] Integration with wearable devices
-- [ ] Multi-language support
+## 📝 License
 
-### Performance Improvements
-- [ ] Image caching optimization
-- [ ] Background sync improvements
-- [ ] Enhanced offline capabilities
+[MIT License](LICENSE)
+
+---
+
+## 💬 Support
+
+💡 Have feedback or need help?
+Open an [Issue](https://github.com/yourname/glowup-app/issues) or start a [Discussion](https://github.com/yourname/glowup-app/discussions)
+
+---
+
+## 💖 Designed for Gen Z | Powered by AI
+
+> A capstone project for **IIT Guwahati – Product Matters 5.0**
+> Built to **reimagine skincare experiences for young users** using smart tech, design thinking, and personalization.
