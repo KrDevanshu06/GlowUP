@@ -10,11 +10,15 @@ import {
   Switch,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { router } from 'expo-router';
+import * as Haptics from 'expo-haptics';
+import { useAuth } from '@/contexts/AuthContext';
 import { User, Settings, Calendar, Award, Camera, Bell, Moon, CircleHelp as HelpCircle, LogOut, ChevronRight, Star, Target, Zap, CreditCard as Edit3, Share2 } from 'lucide-react-native';
 import { useTheme } from '@/contexts/ThemeContext';
 
 export default function ProfileScreen() {
   const { isDarkMode, toggleDarkMode, colors } = useTheme();
+  const { signOut } = useAuth();
   const [notifications, setNotifications] = useState(true);
   const [progressTracking, setProgressTracking] = useState(true);
 
@@ -31,6 +35,16 @@ export default function ProfileScreen() {
     { id: 3, name: 'Glow Getter', icon: '✨', earned: false },
     { id: 4, name: 'Skincare Guru', icon: '🧙‍♀️', earned: false },
   ];
+
+  const handleSignOut = async () => {
+    try {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+      await signOut();
+      router.replace('/auth');
+    } catch (error) {
+      console.error('Sign out error:', error);
+    }
+  };
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
@@ -260,7 +274,7 @@ export default function ProfileScreen() {
         </LinearGradient>
 
         {/* Sign Out */}
-        <TouchableOpacity style={styles.signOutButton}>
+        <TouchableOpacity style={styles.signOutButton} onPress={handleSignOut}>
           <LogOut size={16} color={colors.error} />
           <Text style={[styles.signOutText, { color: colors.error }]}>Sign Out</Text>
         </TouchableOpacity>

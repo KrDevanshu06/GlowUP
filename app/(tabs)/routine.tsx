@@ -91,11 +91,13 @@ export default function RoutineScreen() {
   const currentRoutine = activeTab === 'AM' ? amRoutine : pmRoutine;
 
   const handleDownloadQR = () => {
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     // Generate QR code logic
     alert('QR Code generated! Share your routine with friends ✨');
   };
 
   const handleDownloadPDF = () => {
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     // Generate PDF logic
     alert('PDF downloaded! Check your downloads folder 📄');
   };

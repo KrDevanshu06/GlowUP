@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
+import * as Haptics from 'expo-haptics';
 import { 
   Camera, 
   Star, 
@@ -28,10 +29,12 @@ export default function HomeScreen() {
   const [streakDays, setStreakDays] = useState(7);
 
   const handleStartAnalysis = () => {
-    router.push('/(tabs)/analysis');
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    router.push('/camera?mode=analysis');
   };
 
   const handleViewRoutine = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     router.push('/(tabs)/routine');
   };
 

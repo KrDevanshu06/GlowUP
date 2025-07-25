@@ -10,6 +10,8 @@ import {
   Dimensions,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { router } from 'expo-router';
+import * as Haptics from 'expo-haptics';
 import { 
   Camera, 
   FileText, 
@@ -71,9 +73,12 @@ export default function AnalysisScreen() {
   ];
 
   const handleOptionSelect = (option: 'quiz' | 'camera') => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     setSelectedOption(option);
     if (option === 'camera') {
-      startCameraAnalysis();
+      router.push('/camera?mode=analysis');
+    } else {
+      // Start quiz
     }
   };
 

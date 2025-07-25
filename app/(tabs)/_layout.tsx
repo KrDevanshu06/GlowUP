@@ -14,18 +14,17 @@ export default function TabLayout() {
           shadowRadius: 20,
           shadowColor: '#000',
           shadowOffset: { width: 0, height: -5 },
-          height: 90, // Increased height for better label visibility
-          paddingBottom: 16, // Reduced padding for more space
-          paddingTop: 8,
+          height: 85,
+          paddingBottom: 20,
+          paddingTop: 10,
         },
         tabBarActiveTintColor: '#E8D5FF',
         tabBarInactiveTintColor: '#999',
         tabBarLabelStyle: {
-          fontSize: 14, // Increased font size for better readability
+          fontSize: 12,
           fontWeight: '600',
           marginTop: 4,
         },
-        tabBarShowLabel: true, // Ensure labels are always shown
       }}
     >
       <Tabs.Screen
